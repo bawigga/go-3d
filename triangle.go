@@ -16,6 +16,10 @@ func keyboardHandler(w *glfw.Window, key glfw.Key, scancode int, action glfw.Act
 		w.SetShouldClose(true)
 	}
 }
+func onWindowResize(w *glfw.Window, height int, width int) {
+	gl.Clear(gl.COLOR_BUFFER_BIT)
+	w.SwapBuffers()
+}
 
 func main() {
 
@@ -33,6 +37,7 @@ func main() {
 	}
 
 	window.SetKeyCallback(keyboardHandler)
+	window.SetSizeCallback(onWindowResize)
 
 	window.MakeContextCurrent()
 	glfw.SwapInterval(1)
